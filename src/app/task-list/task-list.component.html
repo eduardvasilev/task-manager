@@ -1,0 +1,12 @@
+<div class="mb-2">
+    <div class="list-group" *ngFor = "let task of tasks">
+        <app-task [task]="task"></app-task>
+    </div>
+</div>
+
+<div class="input-group mb-3">
+    <div class="input-group-prepend">
+        <button  class="btn btn-outline-secondary" (click)="addTask(newtask.value)">Add</button>
+    </div>
+    <input #newtask class="form-control" placeholder="Add a task">
+</div>

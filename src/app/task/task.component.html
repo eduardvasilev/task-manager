@@ -1,0 +1,7 @@
+<!-- <input type="checkbox" name="isDone"  [(ngModel)]="task.isDone"> -->
+<a (click)="updateTaskStatus($event, task)">
+    <div class="task-block">
+        <span [ngClass]="{crossedout:task.isDone}">{{ task.description }}</span>
+    </div>
+</a>
+    
