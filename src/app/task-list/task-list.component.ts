@@ -19,4 +19,13 @@ export class TaskListComponent implements OnInit {
   {
     this.tasks.push({description: value, isDone: false});
   }
+
+  onDeleted(task: Task)
+  {
+    const index = this.tasks.indexOf(task, 0);
+    if (index > -1)
+    {
+      this.tasks.splice(index, 1);
+    }
+  }
 }

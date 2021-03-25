@@ -11,9 +11,14 @@
         <input class="form-control mt-1" [(ngModel)] = "task.description">
    </div>
     <div class="col-md-1">
-        <a (click)="initEdit($event)">
-            <i class="bi bi-pencil" *ngIf="!isEdit"></i>
-            <i class="bi bi-check2-circle" *ngIf="isEdit"></i>
-        </a>
+        <div class="btn-group" role="group" >
+            <a (click)="initEdit($event)" class="btn btn-default">
+                <i class="bi bi-pencil" *ngIf="!isEdit"></i>
+                <i class="bi bi-check2-circle" *ngIf="isEdit"></i>
+            </a>
+            <a class="btn btn-default" (click)="delete($event, task)">
+                <i class="bi bi-trash"></i>
+            </a>
+          </div>
     </div>
 </div>

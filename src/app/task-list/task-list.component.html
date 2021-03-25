@@ -6,5 +6,5 @@
 </div>
     
 <div class="list-group" *ngFor = "let task of tasks">
-    <app-task [task]="task"></app-task>
+    <app-task [task]="task" (deleted)="onDeleted($event)"></app-task>
 </div>

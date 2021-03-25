@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, TemplateRef} from '@angular/core';
+import { Component, Input, OnInit, Output, EventEmitter} from '@angular/core';
 import { Task } from "../model/task";
 
 @Component({
@@ -13,6 +13,7 @@ export class TaskComponent implements OnInit {
   isEdit: boolean = false;
 
   @Input() isDone?: boolean = this.task.isDone;
+  @Output() deleted = new EventEmitter<Task>();
   constructor() { }
 
   ngOnInit(): void {
@@ -26,5 +27,10 @@ export class TaskComponent implements OnInit {
   public initEdit(event: Event): void
   {
     this.isEdit = !this.isEdit;
+  }
+
+  public delete(event: Event, task: Task): void
+  {
+    this.deleted.emit(task);
   }
 }
