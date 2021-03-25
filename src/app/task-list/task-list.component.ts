@@ -9,7 +9,7 @@ import { Task } from "../model/task";
 export class TaskListComponent implements OnInit {
 
   tasks: Task[] = [];
-
+  newTask: string ="";
   constructor() { }
 
   ngOnInit(): void {
@@ -17,6 +17,7 @@ export class TaskListComponent implements OnInit {
 
   addTask(value: string): void
   {
+    this.newTask = "";
     this.tasks.push({description: value, isDone: false});
   }
 
