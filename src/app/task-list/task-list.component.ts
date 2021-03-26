@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Task } from "../model/task";
+import { TaskService } from '../services/task.service';
 
 @Component({
   selector: 'task-list',
@@ -8,9 +9,16 @@ import { Task } from "../model/task";
 })
 export class TaskListComponent implements OnInit {
 
-  tasks: Task[] = [];
+  tasks: Task[];
   newTask: string ="";
-  constructor() { }
+  includeCompleted: boolean = true;
+  taskService: TaskService;
+  
+  constructor(taskService: TaskService) 
+  { 
+    this.tasks = taskService.getTasks();
+    this.taskService = taskService;
+  }
 
   ngOnInit(): void {
   }
@@ -18,7 +26,10 @@ export class TaskListComponent implements OnInit {
   addTask(value: string): void
   {
     this.newTask = "";
-    this.tasks.push({description: value, isDone: false});
+
+    const task: Task = {description: value, isDone: false};
+    this.taskService.addTask(task)
+    this.tasks.push(task);
   }
 
   onDeleted(task: Task)
@@ -28,5 +39,11 @@ export class TaskListComponent implements OnInit {
     {
       this.tasks.splice(index, 1);
     }
+  }
+
+  updateCompletedVisibility()
+  {
+    this.includeCompleted = !this.includeCompleted;
+    this.tasks = this.taskService.getTasks(this.includeCompleted);
   }
 }

@@ -1,9 +1,15 @@
-<div class="input-group mb-3 mt-3">
-    <div class="input-group-prepend">
-        <button  class="btn btn-outline-secondary" (click)="addTask(newtask.value)">Add</button>
+    <div>
+        <div class="input-group mb-3 mt-3">
+            <div class="input-group-prepend">
+                <button  class="btn btn-outline-secondary" (click)="addTask(newtask.value)">Add</button>
+            </div>
+            <input #newtask [(ngModel)]="newTask" class="form-control" placeholder="Add a task">
+        </div>
+        <div class="form-check form-switch">
+            <input class="form-check-input" type="checkbox" id="includeCompleted" checked = "includeCompleted" (change)="updateCompletedVisibility()">
+            <label class="form-check-label" for="includeCompleted">Include completed</label>
+        </div>
     </div>
-    <input #newtask [(ngModel)]="newTask" class="form-control" placeholder="Add a task">
-</div>
     
 <div class="list-group" *ngFor = "let task of tasks">
     <app-task [task]="task" (deleted)="onDeleted($event)"></app-task>

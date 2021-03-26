@@ -19,12 +19,12 @@ export class TaskComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  public updateTaskStatus(event: Event, task: Task): void
+  updateTaskStatus(event: Event, task: Task): void
   {
     task.isDone = !task.isDone;
   }
 
-  public initEdit(event: Event): void
+  initEdit(event: Event): void
   {
     this.isEdit = !this.isEdit;
   }
